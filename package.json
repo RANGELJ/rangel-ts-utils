@@ -1,0 +1,21 @@
+{
+  "name": "rangel-ts-utils",
+  "version": "3.0.0",
+  "description": "A set of functions used by almost all ts projects",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "node scripts/publish.js"
+  },
+  "keywords": [
+    "ts",
+    "utils"
+  ],
+  "type": "module",
+  "author": "Rangel Peralta Jorge Luis",
+  "license": "MIT",
+  "devDependencies": {
+    "execa": "^6.1.0",
+    "fs-extra": "^11.1.0",
+    "typescript": "^4.9.5"
+  }
+}
