@@ -4,7 +4,8 @@
   "description": "A set of functions used by almost all ts projects",
   "main": "index.js",
   "scripts": {
-    "deploy": "node scripts/publish.js"
+    "deploy": "node scripts/deploy.js",
+    "build": "node scripts/build.js"
   },
   "keywords": [
     "ts",

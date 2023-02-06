@@ -1,6 +1,6 @@
 import stringParseAsNumber from "./stringParseAsNumber"
 
-const getNumberFromUnknownOrThrowError = (original: unknown) => {
+const unknownParseAsNumber = (original: unknown) => {
     if (typeof original === 'number' && !Number.isNaN(original)) {
         return original
     }
@@ -8,7 +8,7 @@ const getNumberFromUnknownOrThrowError = (original: unknown) => {
         return stringParseAsNumber(original.trim())
     }
 
-    throw new Error(`(getNumberFromUnknownOrThrowError) Cannot convert [${original}] to number`)
+    throw new Error(`(unknownParseAsNumber) Cannot convert: [${original}] to number`)
 }
 
-export default getNumberFromUnknownOrThrowError
+export default unknownParseAsNumber

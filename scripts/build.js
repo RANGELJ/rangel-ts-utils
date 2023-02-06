@@ -1,16 +1,11 @@
+// @ts-check
 import { execa } from 'execa'
 import fs from 'fs-extra'
-import path, { dirname } from 'path'
-import { fileURLToPath } from 'url'
+import path from 'path'
+import { rootDir, distDir } from './relevantPaths.js'
 
 const main = async () => {
-    const scriptDir = dirname(fileURLToPath(import.meta.url))
-
-    const rootDir = path.resolve(scriptDir, '..')
-
     console.log('Compiling typescript files...', rootDir)
-
-    const distDir = path.resolve(rootDir, 'dist')
 
     await fs.remove(distDir)
 
@@ -40,15 +35,6 @@ const main = async () => {
         'ES6',
     ], {
         cwd: rootDir,
-        stdio: 'inherit',
-    })
-
-    await execa('npm', [
-        'publish',
-        '--userconfig',
-        '~/.npmrc_personal'
-    ], {
-        cwd: distDir,
         stdio: 'inherit',
     })
 }
