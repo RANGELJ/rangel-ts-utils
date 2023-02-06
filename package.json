@@ -15,8 +15,7 @@
   "author": "Rangel Peralta Jorge Luis",
   "license": "MIT",
   "devDependencies": {
-    "execa": "^6.1.0",
-    "fs-extra": "^11.1.0",
+    "rangel-base-deploy-scripts": "^1.0.0",
     "typescript": "^4.9.5"
   }
 }
