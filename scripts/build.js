@@ -1,6 +1,6 @@
 // @ts-check
 import tsBuildAndCopyPackageFiles  from 'rangel-base-deploy-scripts/es6/tsBuildAndCopyPackageFiles.js'
-import { rootDir, distDir } from './relevantPaths.js'
+import { rootDir, distDir } from './paths.js'
 
 const main = async () => {
     await tsBuildAndCopyPackageFiles({
