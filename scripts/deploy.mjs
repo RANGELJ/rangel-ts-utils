@@ -12,19 +12,25 @@ const main = async () => {
     await fs.remove(targetDir)
 
     const packageDir = path.resolve(sourceDir, 'package.json')
-    const packageData = await fs.readJSON(packageDir)
-
-    packageData.type = 'commonjs'
-    const libPackagePath = path.resolve(targetDir, 'package.json')
-    await fs.ensureFile(libPackagePath)
-    await fs.writeJSON(libPackagePath, packageData, { spaces: 4 })
+    await fs.copy(packageDir, path.resolve(targetDir, 'package.json'))
 
     await execa('npx', [
         'tsc',
         '--outDir',
-        targetDir,
+        path.resolve(targetDir, 'cjs'),
         '--module',
         'commonjs',
+    ], {
+        cwd: sourceDir,
+        stdio: 'inherit',
+    })
+
+    await execa('npx', [
+        'tsc',
+        '--outDir',
+        path.resolve(targetDir, 'es6'),
+        '--module',
+        'ES6',
     ], {
         cwd: sourceDir,
         stdio: 'inherit',
