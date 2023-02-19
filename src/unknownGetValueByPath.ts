@@ -1,6 +1,6 @@
-import valueIsArray from 'ts-validators/cjs/valueIsArray'
-import valueIsString from 'ts-validators/cjs/valueIsString'
-import valueIsRecord from 'ts-validators/cjs/valueIsRecord'
+import valueIsArray from 'ts-validators/valueIsArray'
+import valueIsString from 'ts-validators/valueIsString'
+import valueIsRecord from 'ts-validators/valueIsRecord'
 import unknownParseAsNumber from './unknownParseAsNumber'
 
 const unknownGetValueByPath = (
