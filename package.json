@@ -1,6 +1,6 @@
 {
   "name": "rangel-ts-utils",
-  "version": "7.0.1",
+  "version": "7.0.4",
   "description": "A set of functions used by almost all ts projects",
   "main": "index.js",
   "scripts": {
@@ -24,6 +24,6 @@
     "typescript": "^4.9.5"
   },
   "dependencies": {
-    "ts-validators": "^8.0.0"
+    "ts-validators": "^9.0.3"
   }
 }
