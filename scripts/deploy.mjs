@@ -16,6 +16,17 @@ const main = async () => {
 
     await execa('npx', [
         'tsc',
+        '--declaration',
+        '--emitDeclarationOnly',
+        '--outDir',
+        path.resolve(targetDir, 'types'),
+    ], {
+        cwd: sourceDir,
+        stdio: 'inherit',
+    })
+
+    await execa('npx', [
+        'tsc',
         '--outDir',
         path.resolve(targetDir, 'cjs'),
         '--module',
@@ -25,16 +36,39 @@ const main = async () => {
         stdio: 'inherit',
     })
 
+    const es6Dir = path.resolve(targetDir, 'es6')
+
     await execa('npx', [
         'tsc',
         '--outDir',
-        path.resolve(targetDir, 'es6'),
+        es6Dir,
         '--module',
         'ES6',
     ], {
         cwd: sourceDir,
         stdio: 'inherit',
     })
+
+    const es6Files = await fs.readdir(es6Dir)
+
+    await Promise.all(es6Files.map(async (fileName) => {
+        if (fileName.endsWith('.d.ts')) {
+            return
+        }
+        const filePath = path.resolve(es6Dir, fileName)
+        let fileContent = (await fs.readFile(filePath)).toString()
+        const matches = fileContent.match(/'\.\/[^]+?'/)
+
+        if (matches) {
+            matches?.forEach((match) => {
+                fileContent = fileContent.replace(match, match.replace(/'$/, ".mjs'"))
+            })
+        }
+
+        await fs.writeFile(filePath, fileContent)
+
+        await fs.rename(filePath, filePath.replace(/\.js$/, '.mjs'))
+    }))
 
     await execa('npm', [
         'publish',

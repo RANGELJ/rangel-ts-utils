@@ -1,6 +1,6 @@
 {
   "name": "rangel-ts-utils",
-  "version": "7.0.0",
+  "version": "7.0.1",
   "description": "A set of functions used by almost all ts projects",
   "main": "index.js",
   "scripts": {
@@ -8,8 +8,9 @@
   },
   "exports": {
       "./*": {
-          "import": "./esm/*.js",
-          "require": "./es6/*.js"
+        "import": "./es6/*.mjs",
+        "require": "./cjs/*.js",
+        "types": "./types/*.d.ts"
       }
   },
   "keywords": [
