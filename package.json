@@ -1,6 +1,6 @@
 {
   "name": "rangel-ts-utils",
-  "version": "7.0.6",
+  "version": "7.0.7",
   "description": "A set of functions used by almost all ts projects",
   "main": "index.js",
   "scripts": {
