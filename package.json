@@ -1,17 +1,17 @@
 {
   "name": "rangel-ts-utils",
-  "version": "7.0.5",
+  "version": "7.0.6",
   "description": "A set of functions used by almost all ts projects",
   "main": "index.js",
   "scripts": {
     "deploy": "node scripts/deploy.mjs"
   },
   "exports": {
-      "./*": {
-        "import": "./es6/*.mjs",
-        "require": "./cjs/*.js",
-        "types": "./types/*.d.ts"
-      }
+    "./*": {
+      "import": "./es6/*.mjs",
+      "require": "./cjs/*.js",
+      "types": "./types/*.d.ts"
+    }
   },
   "keywords": [
     "ts",
@@ -20,9 +20,12 @@
   "author": "Rangel Peralta Jorge Luis",
   "license": "MIT",
   "devDependencies": {
+    "execa": "^7.0.0",
+    "fs-extra": "^11.1.0",
+    "ts-validators": "^9.0.6",
     "typescript": "^4.9.5"
   },
-  "dependencies": {
-    "ts-validators": "^9.0.5"
+  "peerDependencies": {
+    "ts-validators": "9.0.*"
   }
 }
